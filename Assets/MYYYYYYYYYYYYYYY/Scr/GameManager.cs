@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Button hardButton;
     public GameObject titleScreen;
     public GameObject gameOverScreen;
+    public AudioSource audioSource; // ตัวเล่นเสียง
 
     public float gameTime = 60f; // เวลาทั้งหมด (วินาที)
     private float currentTime;
@@ -24,6 +25,10 @@ public class GameManager : MonoBehaviour
     private int score;
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        
+        Time.timeScale = 0;  // หยุดเกมในตอนเริ่ม
+
         easyButton.onClick.AddListener(() =>
         {
             StartGame(60f); // กำหนดเวลา 60 วินาที
@@ -37,6 +42,8 @@ public class GameManager : MonoBehaviour
         {
             StartGame(30f); // กำหนดเวลา 30 วินาที
         });
+        audioSource.Play();
+
     }
 
     
@@ -65,8 +72,13 @@ public class GameManager : MonoBehaviour
     public void StartGame(float timeLimit)
     {
         titleScreen.SetActive(false);
+        Time.timeScale = 1; // เริ่มเกมใหม่
+
         isGameActive = true;
-        currentTime = timeLimit; // กำหนดเวลาตามโหมด
+        currentTime = timeLimit;
+        // กำหนดเวลาตามโหมด
+        audioSource.Stop();
+
     }
 
 
@@ -78,6 +90,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0;  // หยุดเกมในตอนเริ่ม
+
         isGameActive = false;
         gameOverScreen.SetActive(true);
         gameOverText.text = "Game Over! Time's up!";
@@ -85,6 +99,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1; // เริ่มเกมใหม่
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
