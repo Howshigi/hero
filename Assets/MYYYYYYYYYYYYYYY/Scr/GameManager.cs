@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,36 +16,33 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject gameOverScreen;
     public AudioSource audioSource; // ตัวเล่นเสียง
-
+    public AudioClip Walk; // เสียงเดิน
     public float gameTime = 60f; // เวลาทั้งหมด (วินาที)
     private float currentTime;
     private bool isGameActive = false;
 
     private int score;
+
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        
-        Time.timeScale = 0;  // หยุดเกมในตอนเริ่ม
+        // หยุดเกมในตอนเริ่ม
+        Time.timeScale = 0;
 
+        // กำหนด action เมื่อกดปุ่ม UI
         easyButton.onClick.AddListener(() =>
         {
             StartGame(60f); // กำหนดเวลา 60 วินาที
         });
         normalButton.onClick.AddListener(() =>
         {
-            StartGame(50f); // กำหนดเวลา 30 วินาที
+            StartGame(50f); // กำหนดเวลา 50 วินาที
         });
 
         hardButton.onClick.AddListener(() =>
         {
             StartGame(30f); // กำหนดเวลา 30 วินาที
         });
-        audioSource.Play();
-
     }
-
-    
 
     void Start()
     {
@@ -76,11 +72,12 @@ public class GameManager : MonoBehaviour
 
         isGameActive = true;
         currentTime = timeLimit;
-        // กำหนดเวลาตามโหมด
-        audioSource.Stop();
 
+        // หยุดเสียงพื้นหลัง
+        audioSource.Stop();  
+        // เริ่มเสียงเดิน
+        PlayWalkingSound();  
     }
-
 
     public void UpdateScore(int points)
     {
@@ -90,17 +87,38 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0;  // หยุดเกมในตอนเริ่ม
+        Time.timeScale = 0;  // หยุดเกมในตอนจบ
 
         isGameActive = false;
         gameOverScreen.SetActive(true);
         gameOverText.text = "Game Over! Time's up!";
+
+        // หยุดเสียงเดิน
+        StopWalkingSound();  
+        // เล่นเสียงพื้นหลัง (audioSource) ตอนจบเกม
+        audioSource.Play();  
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1; // เริ่มเกมใหม่
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void PlayWalkingSound()
+    {
+        audioSource.clip = Walk;  // กำหนดเสียงเดิน
+        audioSource.loop = true;  // ทำให้เสียงเดินเล่นวนซ้ำ
+        audioSource.Play();       // เริ่มเล่นเสียงเดิน
+    }
+
+    public void StopWalkingSound()
+    {
+        audioSource.clip = Walk;  // กำหนดเสียงเดิน
+
+        audioSource.loop = false;  // หยุดวนซ้ำ
+        audioSource.Stop();        // หยุดเสียง
+    }
 }
+
+

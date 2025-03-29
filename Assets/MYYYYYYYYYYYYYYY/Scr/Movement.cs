@@ -19,6 +19,7 @@ public class TankMovement : MonoBehaviour
     public float customGravity = -9.81f;  // แรงโน้มถ่วง (m/s^2)
     private Vector3 gravityForce;  // ตัวแปรเก็บแรงโน้มถ่วง
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -63,6 +64,8 @@ public class TankMovement : MonoBehaviour
         {
             ResetPositionAndRotation();
         }
+        
+       
     }
 
     // ฟังก์ชันกระโดด
