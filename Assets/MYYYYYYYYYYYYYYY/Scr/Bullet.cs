@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     public ParticleSystem explosionParticle;
     public float damage = 100f; // ดาเมจของกระสุน
     public float lifeTime = 5f; // กระสุนจะหายไปหลังจาก 5 วินาที
-
+    public AudioSource audioSource;
     void Start()
     {
         Destroy(gameObject, lifeTime); // ทำลายกระสุนถ้าไม่ได้โดนอะไร
@@ -23,9 +23,10 @@ public class Bullet : MonoBehaviour
             {
                 building.TakeDamage(damage); // ลดเลือดตึก
             }
-
             Instantiate(explosionParticle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject); // ทำลายกระสุนเมื่อชนตึก
+            audioSource.Play();
+
         }
     }
 
