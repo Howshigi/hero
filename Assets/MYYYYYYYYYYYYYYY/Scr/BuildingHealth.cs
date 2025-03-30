@@ -7,7 +7,6 @@ public class BuildingHealth : MonoBehaviour
     public int point;
     GameManager gameManager;
 
-
     void Start()
     {
         currentHealth = maxHealth; // ตั้งค่าเลือดเริ่มต้น
@@ -30,7 +29,6 @@ public class BuildingHealth : MonoBehaviour
 
     void DestroyBuilding()
     {
-
         Debug.Log("Building Destroyed!");
         Destroy(gameObject); // ลบตึกออกจากฉาก
     }

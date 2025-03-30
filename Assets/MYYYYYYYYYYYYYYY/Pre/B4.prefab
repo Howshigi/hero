@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8306362102200579691, guid: 96e58a7e54fb91947a72daaf2b4055fa, type: 3}
       propertyPath: m_TagString
-      value: B4
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -557,6 +557,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8306362102200579691, guid: 96e58a7e54fb91947a72daaf2b4055fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7391755552504840172}
+    - targetCorrespondingSourceObject: {fileID: 8306362102200579691, guid: 96e58a7e54fb91947a72daaf2b4055fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1203239605265123784}
   m_SourcePrefab: {fileID: 100100000, guid: 96e58a7e54fb91947a72daaf2b4055fa, type: 3}
 --- !u!4 &6057225224223907127 stripped
 Transform:
@@ -589,6 +592,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20.000006, y: 47.154873, z: 12}
   m_Center: {x: 0, y: 22.949673, z: 0}
+--- !u!114 &-1203239605265123784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085516706313940772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073696047f1163c4ba5a8839260205c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  point: 25
 --- !u!1001 &1281943159462987395
 PrefabInstance:
   m_ObjectHideFlags: 0
