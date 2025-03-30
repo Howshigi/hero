@@ -90,11 +90,9 @@ public class TankMovement : MonoBehaviour
             timeSinceLastJump = 0f;
         }
     }
-
-    // ฟังก์ชันเช็กว่ารถถังอยู่บนพื้นหรือไม่
+    
     bool IsGrounded()
     {
-        // เช็กว่า `CharacterController` หรือ `Rigidbody` สัมผัสกับพื้นหรือไม่
         return Physics.Raycast(transform.position, Vector3.down, 1f);
     }
 

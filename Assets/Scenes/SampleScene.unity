@@ -5161,7 +5161,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tank of building
+  m_text: 'Destructive Tank
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21b24a4116a82634ea9ec9103494ee11, type: 2}
   m_sharedMaterial: {fileID: -6450539372322944565, guid: 21b24a4116a82634ea9ec9103494ee11, type: 2}
@@ -5226,7 +5228,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -271.0594, w: 51.021454}
+  m_margin: {x: 0, y: 0, z: -286.9863, w: 51.021454}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9330,12 +9332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9716,6 +9718,10 @@ PrefabInstance:
       propertyPath: m_ImplicitCom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1415698939012379532, guid: 4645ea01af387c746ab2090684590d6c, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3381079042931587784, guid: 4645ea01af387c746ab2090684590d6c, type: 3}
       propertyPath: m_Name
       value: turrent
@@ -9770,7 +9776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7918698396850851736, guid: 4645ea01af387c746ab2090684590d6c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
