@@ -9,7 +9,7 @@ public class BuildingHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth; // ตั้งค่าเลือดเริ่มต้น
+        currentHealth = maxHealth; 
         GameObject go = GameObject.Find("GameManager");
         gameManager = go.GetComponent<GameManager>();
     }
@@ -23,13 +23,13 @@ public class BuildingHealth : MonoBehaviour
         {
             gameManager.UpdateScore(point);
 
-            DestroyBuilding(); // ทำลายตึกถ้าเลือดหมด
+            DestroyBuilding(); 
         }
     }
 
     void DestroyBuilding()
     {
         Debug.Log("Building Destroyed!");
-        Destroy(gameObject); // ลบตึกออกจากฉาก
+        Destroy(gameObject); 
     }
 }

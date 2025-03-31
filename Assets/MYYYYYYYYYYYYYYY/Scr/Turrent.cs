@@ -1,29 +1,27 @@
-using UnityEngine ;
+    using UnityEngine ;
 using System.Collections;
 
 public class Turrent : MonoBehaviour
 {
-    public GameObject muzzleFlashPrefab; // เอฟเฟกต์แสงตอนยิง
-
+    public GameObject muzzleFlashPrefab; 
     public Transform turret;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
     public float turretRotationSpeed = 80f;
-    public float fireRate = 2f; // คูลดาวน์ 2 วินาที
+    public float fireRate = 2f; 
     private float nextFireTime = 0f;
 
     
-    public AudioSource audioSource; // ตัวเล่นเสียง
-    public AudioClip shootClip; // ไฟล์เสียงตอนยิง
+    public AudioSource audioSource; 
+    public AudioClip shootClip; 
 
     void Update()
     {
-        // หันป้อมปืนตามเมาส์
         float mouseX = Input.GetAxis("Mouse X") * turretRotationSpeed * Time.deltaTime;
         turret.Rotate(0, mouseX, 0);
 
-        // ยิงกระสุนเมื่อกดคลิกซ้ายและผ่านคูลดาวน์แล้ว
+        
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
@@ -39,10 +37,10 @@ public class Turrent : MonoBehaviour
         if (muzzleFlashPrefab != null)
         {
             GameObject flash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-            Destroy(flash, 0.1f); // ลบ effect หลังแสดง 0.1 วินาที
+            Destroy(flash, 0.1f); 
         }
 
-        // เล่นเสียงยิง
+        
         if (audioSource != null && shootClip != null)
         {
             audioSource.PlayOneShot(shootClip);

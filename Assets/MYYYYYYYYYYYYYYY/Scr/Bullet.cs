@@ -4,27 +4,27 @@ public class Bullet : MonoBehaviour
 {
 
     public ParticleSystem explosionParticle;
-    public float damage = 100f; // ดาเมจของกระสุน
-    public float lifeTime = 5f; // กระสุนจะหายไปหลังจาก 5 วินาที
+    public float damage = 100f; 
+    public float lifeTime = 5f; 
     public AudioSource audioSource;
     void Start()
     {
-        Destroy(gameObject, lifeTime); // ทำลายกระสุนถ้าไม่ได้โดนอะไร
+        Destroy(gameObject, lifeTime); 
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // เช็กว่ากระสุนชนกับตึกหรือไม่
+        
         if (other.CompareTag("Building"))   
         {
             Debug.Log("Hit");
             BuildingHealth building = other.GetComponent<BuildingHealth>();
             if (building != null)
             {
-                building.TakeDamage(damage); // ลดเลือดตึก
+                building.TakeDamage(damage); 
             }
             Instantiate(explosionParticle, gameObject.transform.position, Quaternion.identity);
-            Destroy(gameObject); // ทำลายกระสุนเมื่อชนตึก
+            Destroy(gameObject); 
             audioSource.Play();
 
         }

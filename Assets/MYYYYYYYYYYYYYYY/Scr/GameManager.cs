@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("UI Elements")]
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI timerText;  // แสดงเวลาถอยหลัง
+    public TextMeshProUGUI timerText;  
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
     public Button easyButton;
@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     public Button hardButton;
     public GameObject titleScreen;
     public GameObject gameOverScreen;
-    public AudioSource audioSource; // ตัวเล่นเสียง
-    public AudioClip Walk; // เสียงเดิน
-    public float gameTime = 60f; // เวลาทั้งหมด (วินาที)
+    public AudioSource audioSource; 
+    public AudioClip Walk;
+    public float gameTime = 60f; 
     private float currentTime;
     private bool isGameActive = false;
 
@@ -25,29 +25,29 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // หยุดเกมในตอนเริ่ม
+        
         Time.timeScale = 0;
 
-        // กำหนด action เมื่อกดปุ่ม UI
+        
         easyButton.onClick.AddListener(() =>
         {
-            StartGame(60f); // กำหนดเวลา 60 วินาที
+            StartGame(60f); 
         });
         normalButton.onClick.AddListener(() =>
         {
-            StartGame(50f); // กำหนดเวลา 50 วินาที
+            StartGame(50f); 
         });
 
         hardButton.onClick.AddListener(() =>
         {
-            StartGame(30f); // กำหนดเวลา 30 วินาที
+            StartGame(30f); 
         });
     }
 
     void Start()
     {
         scoreText.text = "Score: " + score;
-        timerText.text = "Time: " + gameTime.ToString("F1"); // แสดงเวลาเริ่มต้น
+        timerText.text = "Time: " + gameTime.ToString("F1"); 
         currentTime = gameTime;
     }
 
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             currentTime -= Time.deltaTime;
-            timerText.text = "Time: " + currentTime.ToString("F1"); // อัปเดต UI เวลา
+            timerText.text = "Time: " + currentTime.ToString("F1"); 
 
             if (currentTime <= 0)
             {
@@ -68,14 +68,14 @@ public class GameManager : MonoBehaviour
     public void StartGame(float timeLimit)
     {
         titleScreen.SetActive(false);
-        Time.timeScale = 1; // เริ่มเกมใหม่
+        Time.timeScale = 1; 
 
         isGameActive = true;
         currentTime = timeLimit;
 
-        // หยุดเสียงพื้นหลัง
+        
         audioSource.Stop();  
-        // เริ่มเสียงเดิน
+        
         PlayWalkingSound();  
     }
 
@@ -87,37 +87,36 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0;  // หยุดเกมในตอนจบ
-
+        Time.timeScale = 0;  
         isGameActive = false;
         gameOverScreen.SetActive(true);
         gameOverText.text = "Game Over! Time's up!";
 
-        // หยุดเสียงเดิน
+        
         StopWalkingSound();  
-        // เล่นเสียงพื้นหลัง (audioSource) ตอนจบเกม
+        
         audioSource.Play();  
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1; // เริ่มเกมใหม่
+        Time.timeScale = 1; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void PlayWalkingSound()
     {
-        audioSource.clip = Walk;  // กำหนดเสียงเดิน
-        audioSource.loop = true;  // ทำให้เสียงเดินเล่นวนซ้ำ
-        audioSource.Play();       // เริ่มเล่นเสียงเดิน
+        audioSource.clip = Walk;  
+        audioSource.loop = true;  
+        audioSource.Play();       
     }
 
     public void StopWalkingSound()
     {
-        audioSource.clip = Walk;  // กำหนดเสียงเดิน
+        audioSource.clip = Walk;  
 
-        audioSource.loop = false;  // หยุดวนซ้ำ
-        audioSource.Stop();        // หยุดเสียง
+        audioSource.loop = false; 
+        audioSource.Stop();        
     }
 }
 
