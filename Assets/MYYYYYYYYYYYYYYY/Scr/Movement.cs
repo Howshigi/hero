@@ -69,25 +69,22 @@ public class TankMovement : MonoBehaviour
        
     }
 
-    // ฟังก์ชันกระโดด
     void Jump()
     {
-        // หากเวลาคูลดาวน์หมดหรือยังสามารถกระโดดได้
         if (timeSinceLastJump >= cooldownTime)
         {
-            jumpCount = 0;  // รีเซ็ตจำนวนการกระโดดเมื่อเวลาคูลดาวน์หมด
+            jumpCount = 0;  
         }
 
-        // ให้กระโดดได้สูงสุด 2 ครั้ง
-        if (jumpCount < 2 && IsGrounded())  // เช็กว่ารถถังอยู่บนพื้นหรือไม่
+        if (jumpCount < 2 && IsGrounded())  
         {
-            // เพิ่มแรงกระโดดในแกน Y
+            
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-            // เพิ่มจำนวนการกระโดด
+            
             jumpCount++;
 
-            // รีเซ็ตเวลาหลังจากกระโดด
+            
             timeSinceLastJump = 0f;
         }
     }
@@ -97,11 +94,11 @@ public class TankMovement : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, 1f);
     }
 
-    // ฟังก์ชันรีเซ็ตตำแหน่งและการหมุน
+    
     void ResetPositionAndRotation()
     {
-        rb.velocity = Vector3.zero; // รีเซ็ตความเร็วเมื่อรีเซ็ตตำแหน่ง
-        rb.angularVelocity = Vector3.zero; // รีเซ็ตการหมุน
+        rb.velocity = Vector3.zero; 
+        rb.angularVelocity = Vector3.zero; 
         transform.position = startPosition;
         transform.rotation = startRotation;
     }
